@@ -15,7 +15,6 @@ Form::Form(std::string Name, int signGrade, int executeGrade) : _name(Name), _si
 		std::cout << "Form: ";
 		throw gradeTooHighException();
 	}
-	std::cout << _name << " build and filled\n";
 }
 
 Form::Form(const Form& other) : _name(other.getName()), _signGrade(other.getSignGrade()), _executeGrade(other.getExecuteGrade())
@@ -27,9 +26,8 @@ Form&	Form::operator=(const Form& other)
 {
 	if (this != &other)
 		this->_signed = other._signed;
-	return (*this);
+	return *this;
 }
-
 
 Form::~Form()
 {
@@ -41,27 +39,24 @@ const char* Form::gradeTooHighException::what() const noexcept
 	return "too high\n";
 }
 
-
-
-
 std::string    Form::getName() const
 {
-    return (this->_name);
+    return this->_name;
 }
 
 bool    Form::getBool() const
 {
-    return (this->_signed);
+    return this->_signed;
 }
 
 int	Form::getSignGrade() const
 {
-    return (this->_signGrade);
+    return this->_signGrade;
 }
 
 int	Form::getExecuteGrade() const
 {
-    return (this->_executeGrade);
+    return this->_executeGrade;
 }
 
 const char*	Form::gradeTooLowException::what() const noexcept
@@ -82,5 +77,5 @@ std::ostream &operator<<(std::ostream &o, Form const &f)
 		<< "\n" << "signBool: " << f.getBool() 
 		<< "\n" << "Excecution Grade: " << f.getExecuteGrade() 
 		<< "\n" << "Sign Grade: " << f.getSignGrade() << "\n";
-	return (o);
+	return o;
 }

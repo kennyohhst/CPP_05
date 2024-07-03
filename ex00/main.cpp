@@ -15,10 +15,13 @@
 int main(void)
 {
 	try {
-		Bureaucrat x("", (10));
+		Bureaucrat x("hi", (2));
 		try {
-			x.decreaseGrade();
+			// x.decreaseGrade();
 			x.increaseGrade();
+			x.increaseGrade();
+			x.increaseGrade();
+
 		} catch (const std::exception& e)
 		{
 			std::cerr << e.what();

@@ -36,9 +36,8 @@ class Intern
 		Intern(const Intern& other);
 		Intern& operator=(const Intern& other);
 		~Intern();
-		AForm	*makeForm(std::string formName, std::string target);
 
-		
+		AForm	*makeForm(std::string formName, std::string target);
 
 		//Exceptions
 		class GradeTooHigh : public std::exception {

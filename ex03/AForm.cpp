@@ -33,34 +33,37 @@ const char* AForm::gradeTooHighException::what() const noexcept
 
 AForm::alreadySigned::alreadySigned() : std::logic_error("dude, we don't need your signature, it's already signed by ") {}
 
+AForm::signedOrNot::signedOrNot() : std::logic_error("Sign it please :D\n") {}
+
+
 std::string	AForm::getSignature()
 {
-	return (this->_signature);
+	return this->_signature;
 }
 
 std::string		AForm::getType() const
 {
-	return (this->_type);
+	return this->_type;
 }
 
 std::string    AForm::getName() const
 {
-    return (this->_name);
+    return this->_name;
 }
 
 bool    AForm::getBool() const
 {
-    return (this->_signed);
+    return this->_signed;
 }
 
 int	AForm::getSignGrade() const
 {
-    return (this->_signGrade);
+    return this->_signGrade;
 }
 
 int	AForm::getExecuteGrade() const
 {
-    return (this->_executeGrade);
+    return this->_executeGrade;
 }
 
 const char*	AForm::gradeTooLowException::what() const noexcept
@@ -74,8 +77,18 @@ void	AForm::beSigned(Bureaucrat& bureauC)
 		throw gradeTooLowException();
 	if (this->getBool())
 		throw alreadySigned();
+	this->_signature = bureauC.getName();
 	this->_signed = true;
 }
+
+void 		AForm::execute(Bureaucrat const & executor) const
+{
+	if (executor.getGrade() > this->getExecuteGrade())
+		throw gradeTooLowException();
+	if (this->getBool() == false)
+		throw signedOrNot();
+}
+
 
 std::ostream &operator<<(std::ostream &o, AForm const &f)
 {
@@ -83,5 +96,5 @@ std::ostream &operator<<(std::ostream &o, AForm const &f)
 	<< "\n" << "signBool: " << f.getBool() 
 	<< "\n" << "Excecution Grade: " << f.getExecuteGrade() 
 	<< "\n" << "Sign Grade: " << f.getSignGrade() << "\n";
-	return (o);
+	return o;
 }

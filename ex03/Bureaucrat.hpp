@@ -33,7 +33,6 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat& other);
 		Bureaucrat& operator=(const Bureaucrat& other);
 
-
 		std::string	getName() const;
 		int 		getGrade() const;
 		void		increaseGrade();

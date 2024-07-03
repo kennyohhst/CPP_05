@@ -20,12 +20,11 @@ class Form
 		Form& operator=(const Form& other);
 		~Form();
 		
-		
-		std::string getName() const;
-		bool getBool() const;
-		int getSignGrade() const;
-		int getExecuteGrade() const;
-		void beSigned(Bureaucrat& BureauC);
+		std::string	getName() const;
+		bool		getBool() const;
+		int			getSignGrade() const;
+		int			getExecuteGrade() const;
+		void		beSigned(Bureaucrat& BureauC);
 		
 		class gradeTooLowException : public std::exception {
 			public:
@@ -38,6 +37,5 @@ class Form
 };
 
 std::ostream &operator<<(std::ostream &o, Form const &f);
-
 
 #endif

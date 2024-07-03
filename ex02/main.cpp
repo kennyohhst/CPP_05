@@ -33,16 +33,16 @@ int main(void)
 	try {
 		bobbie = std::make_unique<Bureaucrat>("Bobbie", (1));
 
-		William = std::make_unique<Bureaucrat>("William", (150));
+		William = std::make_unique<Bureaucrat>("William", (1));
 		// Bureaucrat test(*William);
 		test = *William;
 		// test(William);
-		// std::cout << CYAN << "s_form test\n" << RESET;
-		// bobbie->SignAForm(*s_form);
-		// William->SignAForm(*s_form);
-		// test.SignAForm(*s_form);
-		// William->executeForm(*s_form);
-		// test.executeForm(*s_form);
+		std::cout << CYAN << "s_form test\n" << RESET;
+		bobbie->SignAForm(*s_form);
+		William->SignAForm(*s_form);
+		test.SignAForm(*s_form);
+		William->executeForm(*s_form);
+		test.executeForm(*s_form);
 		
 		std::cout << CYAN << "\n\nr_form test\n" << RESET;
 		test.SignAForm(*r_form);
@@ -51,11 +51,11 @@ int main(void)
 		test.executeForm(*r_form);
 		William->executeForm(*r_form);
 		bobbie->executeForm(*r_form);
-		// std::cout << CYAN << "\n\np_form test\n" << RESET;
-		// test.SignAForm(*p_form);
-		// William->SignAForm(*p_form);
-		// test.executeForm(*p_form);
-		// William->executeForm(*p_form);
+		std::cout << CYAN << "\n\np_form test\n" << RESET;
+		test.SignAForm(*p_form);
+		William->SignAForm(*p_form);
+		test.executeForm(*p_form);
+		William->executeForm(*p_form);
 
 
 		// std::cout << ONWHITE << s_form->getBool() << " signbool" <<  RESET << "\n";

@@ -3,7 +3,7 @@
 
 // CANONICAL CLASS AForm =======================================================
 
-Bureaucrat::Bureaucrat() {}
+Bureaucrat::Bureaucrat() : _name(""), _grade(0) {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
@@ -23,7 +23,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 {
     if (this != &other)
 		this->_grade = other._grade;
-    return (*this);
+    return *this;
 }
 
 Bureaucrat::~Bureaucrat() {}
@@ -100,14 +100,9 @@ void	Bureaucrat::SignAForm(AForm& AForm)
 
 void	Bureaucrat::executeForm(AForm const & form)
 {
-	if (form.getBool() == 0)
-	{
-		std::cout << BRED << "dude, you need to sign the form, wth are you doing????" << RESET << "\n";
-		return ;
-	}
 	try
 	{
-		form.executeFile(*this);
+		form.execute(*this);
 		if (std::size(this->getName()) > 0)
 			std::cout << BGREEN << this->getName() << " has executed " << form.getType() << RESET << "\n"; 
 		else

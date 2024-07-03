@@ -51,9 +51,7 @@ AForm	*Intern::makeForm(std::string formName, std::string target)
 		i++;
 	
 	switch (i)
-	{
 		case 3:
 			throw wrongFormName();
-	}
     return (this->*funcptr[i])(target);
 }

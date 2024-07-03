@@ -8,16 +8,14 @@ class Bureaucrat;
 
 class AForm
 {
-    protected:
+    private:
         const std::string   _name;
         bool				_signed;
         const int           _signGrade;
 		const int			_executeGrade;
+    public:
 		const std::string	_type;
 		std::string			_signature;
-
-
-    public:
 		AForm();
 		AForm(std::string Name, int signGrade, int executeGrade);
 		AForm(const AForm& other);
@@ -30,10 +28,8 @@ class AForm
 		bool 				getBool() const;
 		int 				getSignGrade() const;
 		int					getExecuteGrade() const;
-		virtual void 		executeFile(Bureaucrat const & executor) const = 0;
-		virtual void 		beSigned(Bureaucrat& BureauC) = 0;
-
-		// beexecuted func (it's just like sign and besigned)
+		virtual void 		execute(Bureaucrat const & executor) const = 0;
+		void 				beSigned(Bureaucrat& BureauC);
 		
 		class gradeTooLowException : public std::exception {
 			public:
@@ -46,7 +42,10 @@ class AForm
 		class alreadySigned : public std::logic_error {
 			public:
 				alreadySigned();
-				// const char *what() const noexcept override;
+		};
+		class signedOrNot : public std::logic_error {
+			public:
+				signedOrNot();
 		};
 
 };

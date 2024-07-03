@@ -35,7 +35,6 @@ int main(void)
 
 	AForm *form = bob.makeForm("shrubbery creation request", "idk");
 
-
 	try {
 		bobbie = std::make_unique<Bureaucrat>("Bobbie", (1));
 		

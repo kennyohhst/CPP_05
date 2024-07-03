@@ -27,10 +27,11 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat& other);
 		Bureaucrat& operator=(const Bureaucrat& other);
 		~Bureaucrat();
-		std::string getName() const;
-		int getGrade() const;
-		void increaseGrade();
-		void decreaseGrade();
+
+		std::string	getName() const;
+		int			getGrade() const;
+		void		increaseGrade();
+		void		decreaseGrade();
 
 		//Exceptions
 		class GradeTooHigh : public std::exception {

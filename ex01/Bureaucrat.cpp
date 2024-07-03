@@ -3,7 +3,7 @@
 
 // CANONICAL CLASS Form =======================================================
 
-Bureaucrat::Bureaucrat() {}
+Bureaucrat::Bureaucrat() : _name(""), _grade(0) {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) //if u wanna do _name = name on a const, do like this <<< this good, this workie
 {
@@ -35,7 +35,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 
 std::string Bureaucrat::getName() const
 {
-	return (this->_name);
+	return this->_name;
 }
 
 int	Bureaucrat::getGrade() const
@@ -96,7 +96,7 @@ std::ostream	&operator<<(std::ostream &o, Bureaucrat const &x)
 {
 
 	o <<  x.getName() << ", bureaucrat grade " << x.getGrade();
-	return (o);
+	return o;
 
 }
 

@@ -2,7 +2,7 @@
 
 // CANONICAL CLASS AForm =======================================================
 
-Bureaucrat::Bureaucrat() {}
+Bureaucrat::Bureaucrat() : _name(""), _grade(0) {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
@@ -25,10 +25,11 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 	return *this;
 }
 
+Bureaucrat::~Bureaucrat() {}
 
 std::string Bureaucrat::getName() const
 {
-	return (this->_name);
+	return this->_name;
 }
 
 int	Bureaucrat::getGrade() const
@@ -56,7 +57,6 @@ void	Bureaucrat::decreaseGrade()
 	}
 }
 
-Bureaucrat::~Bureaucrat() {}
 
 const char*	Bureaucrat::GradeTooHigh::what() const noexcept
 {
@@ -71,6 +71,6 @@ const char*	Bureaucrat::GradeTooLow::what() const noexcept
 std::ostream	&operator<<(std::ostream &o, Bureaucrat const &x)
 {
 	o <<  x.getName() << ", bureaucrat grade " << x.getGrade();
-	return (o);
+	return o;
 }
 

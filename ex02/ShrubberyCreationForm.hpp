@@ -26,9 +26,7 @@ class ShrubberyCreationForm : public AForm
 		std::string	getType() const override;
 		int			getSignGrade() const;
 		int			getExecuteGrade() const;
-		void		executeFile(Bureaucrat const &executor) const override;
-		void 		beSigned(Bureaucrat& BureauC) override;
-		
+		void		execute(Bureaucrat const &executor) const override;		
 };
 
 #endif

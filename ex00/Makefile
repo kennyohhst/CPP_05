@@ -13,7 +13,7 @@
 NAME := Bureaucrat
 NICKNAME := Bureaucrat
 CXX := c++
-CXXFLAGS := -Wall -Werror -Wextra -g -fsanitize=address
+CXXFLAGS := -Wall -Werror -Wextra -g -fsanitize=address -std=c++17
 SRC :=	main.cpp \
 		Bureaucrat.cpp
 		

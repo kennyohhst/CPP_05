@@ -27,10 +27,7 @@ class PresidentialPardonForm : public AForm
 		std::string	getName() const override; 
 		int			getSignGrade() const;
 		int			getExecuteGrade() const;
-		void		executeFile(Bureaucrat const & executor) const override;
-		void		beSigned(Bureaucrat& BureauC) override;
-
-
+		void		execute(Bureaucrat const & executor) const override;
 };
 
 

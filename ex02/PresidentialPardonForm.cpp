@@ -19,7 +19,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 {
 	if (this != &other)
 	{
-		this->_signed = other._signed;
+		// this->_signed = other._signed;
 		this->_signature = other._signature;
 	}
 	return *this;
@@ -51,21 +51,8 @@ int	PresidentialPardonForm::getExecuteGrade() const
 	return this->_executeGrade;
 }
 
-void	PresidentialPardonForm::executeFile(Bureaucrat const & executor) const
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	if (executor.getGrade() > 5)
-		throw gradeTooLowException();
+	AForm::execute(executor);
 	std::cout << BGREEN << this->_target << " has been pardoned by ZaphodBeeblebrox" << RESET << "\n";
-}
-
-void	PresidentialPardonForm::beSigned(Bureaucrat& BureauC)
-{
-	std::cout << "why nothing?: " << this->getSignature() << "\n";
-	if (BureauC.getGrade() > this->getSignGrade())
-		throw gradeTooLowException();
-	if (this->_signed == true)
-		throw alreadySigned();
-
-	this->_signature = BureauC.getName();
-	this->_signed = true;
 }

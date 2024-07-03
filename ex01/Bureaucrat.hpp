@@ -32,16 +32,12 @@ class Bureaucrat
 		Bureaucrat& operator=(const Bureaucrat& other);
 		~Bureaucrat();
 
-		//operator overload "=" is needed
-		//because we need to be able
-		//to use it outside of the try catch block
-		// Bureaucrat& operator=(const Bureaucrat& b_copy);
-
-		std::string getName() const;
-		int getGrade() const;
-		void increaseGrade();
-		void decreaseGrade();
-		void SignForm(Form& Form);
+		std::string	getName() const;
+		int			getGrade() const;
+		void		increaseGrade();
+		void		decreaseGrade();
+		void		SignForm(Form& Form);
+		
 		//Exceptions
 		class GradeTooHigh : public std::exception {
 			public:
@@ -51,8 +47,6 @@ class Bureaucrat
 			public:
 				const char *what() const noexcept override;
 		};
-
-
 };
 
 std::ostream	&operator<<(std::ostream &o, Bureaucrat const &x);

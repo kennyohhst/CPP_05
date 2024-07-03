@@ -19,7 +19,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 {
 	if (this != &other)
 	{
-		this->_signed = other._signed;
+		// this->_signed = other._signed;
 		this->_signature = other._signature;
 	}
 	return *this;
@@ -50,21 +50,9 @@ int	ShrubberyCreationForm::getExecuteGrade() const
 	return this->_executeGrade;
 }
 
-void	ShrubberyCreationForm::beSigned(Bureaucrat& bureauC)
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (bureauC.getGrade() > this->getSignGrade())
-		throw gradeTooLowException();
-	if (this->_signed == true)
-		throw alreadySigned();
-	this->_signed = true;
-	this->_signature = bureauC.getName();
-}
-
-void	ShrubberyCreationForm::executeFile(Bureaucrat const &executor) const
-{
-	if (executor.getGrade() > 137)
-		throw gradeTooLowException();
-	
+	AForm::execute(executor);
 	std::ofstream file;
 	std::string nameOfFile = this->_target;
 

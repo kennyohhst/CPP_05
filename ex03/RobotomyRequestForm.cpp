@@ -19,7 +19,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 {
 	if (this != &other)
 	{
-		this->_signed = other._signed;
+		// this->_signed = other._signed;
 		this->_signature = other._signature;
 	}
 	return *this;
@@ -50,30 +50,18 @@ int	RobotomyRequestForm::getExecuteGrade() const
 	return this->_executeGrade;
 }
 
-void	RobotomyRequestForm::executeFile(Bureaucrat const &executor) const
+void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	if (executor.getGrade() > 45)
-		throw gradeTooLowException();
+	AForm::execute(executor);
 	std::cout << BBLUE << "DRILLDRILLDRILL\n" << RESET;
 	std::cout << BBLUE << "DRILLDRILLDRILL\n" << RESET;
 	std::cout << BBLUE << "DRILLDRILLDRILL\n" << RESET;
-    std::srand(std::time(0)); // seeding the random func
+    std::srand(std::time(0));
 	int i = rand() % 2;
-	std::cout << ONIWHITE << i << RESET << std::endl;
+	// std::cout << ONIWHITE << i << RESET << std::endl;
 
 	if (i == 1)
 		std::cout << BRED << "Robotomy FAILED!" << RESET << "\n";
 	else
 		std::cout << BGREEN << _target << " has been robotomized successfully!" << RESET << "\n";
-}
-
-void	RobotomyRequestForm::beSigned(Bureaucrat& BureauC)
-{
-	if (BureauC.getGrade() > this->getSignGrade())
-		throw gradeTooLowException();
-	if (this->_signed == true)
-		throw alreadySigned();
-	
-	this->_signature = BureauC.getName();
-	this->_signed = true;
 }
